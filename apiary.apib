@@ -163,7 +163,7 @@ A single Comment object with all its details
                   "isActive": true,
                   "modifiedByUserName": "John Smith",
                   "parentId": 12345
-                  }]
+                }]
             }
 
 ### Update a Comment [PATCH]
@@ -212,16 +212,47 @@ Removes a Comment object
 
 + Response 204
 
-## ChildComment [/hub-internal/v1/comments/{id}/children/]
-
-A single ChildComment object with all its details
+## Child Comments [/hub-internal/v1/comments/{id}/children/]
 
 + Parameters
-    + id (required, number, `123456`) ... number `id` of the Comment to perform action with. Has example value.
+    + id (required, number, `12345`) ... number `id` of the parent comment to perform action with. Has example value.
 
-### Create a ChildComment [POST]
+### Get a Collection of Child Comments [GET]
 
-Create a ChildComment
++ Response 200 (application/json)
+
+        {
+            "_links": {
+                "self": { "href": "/comments/12345/children?page=1&pageSize=3" },
+                "next": { "href": "/comments/12345/children?page=2&pageSize=3" },
+                "prev": { "href": "/comments/12345/children?page=0&pageSize=3" }
+            },        
+            "count": 2,
+            "page": 1,
+            "pageSize": 3,
+            "entries": [
+                {
+                  "id": 12349,
+                  "lastUpdated": "2014-05-02T12:52:16",
+                  "commentVersion": 0,
+                  "commentText": "Child comment 1",
+                  "isActive": true,
+                  "modifiedByUserName": "John Smith",
+                  "parentId": 12345
+                },
+                {
+                  "id": 12356,
+                  "lastUpdated": "2014-05-02T12:52:16",
+                  "commentVersion": 1,
+                  "commentText": "Child comment 2",
+                  "isActive": true,
+                  "modifiedByUserName": "John Smith",
+                  "parentId": 12345
+                }
+            ]
+        }
+
+### Create a Child Comment [POST]
 
 + Request (application/json)
 
@@ -243,5 +274,5 @@ Create a ChildComment
           "isActive": true,
           "createdByUserName": "John Smith",
           "modifiedByUserName": "John Smith",
-          "parentId": 123456
+          "parentId": 12345
         }
