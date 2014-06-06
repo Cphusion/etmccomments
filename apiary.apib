@@ -38,7 +38,7 @@ This API returns all comments that meet the filter criteria.
                   "id": 123456,
                   "createdDate": "2014-05-01T16:20:02",
                   "lastUpdated": "2014-05-01T16:26:31",
-                  "createdBy": "10654823",
+                  "createdBy": 10654823,
                   "commentVersion": 1,
                   "category1": "CampaignApproval-V2",
                   "category2": "5096",
@@ -51,13 +51,14 @@ This API returns all comments that meet the filter criteria.
                   "y": "0.7341772151898734",
                   "isActive": true,
                   "createdByUserName": "John Smith",
-                  "modifiedByUserName": "John Smith"
+                  "modifiedByUserName": "John Smith",
+                  "modifiedBy": 10654823
                 },
                 {
                   "id": 123457,
                   "createdDate": "2014-05-01T16:20:02",
                   "lastUpdated": "2014-05-01T16:26:31",
-                  "createdBy": "10654823",
+                  "createdBy": 10654823,
                   "commentVersion": 1,
                   "category1": "CampaignApproval-V2",
                   "category2": "5096",
@@ -70,7 +71,8 @@ This API returns all comments that meet the filter criteria.
                   "y": "0.7341772151898734",
                   "isActive": true,
                   "createdByUserName": "John Smith",
-                  "modifiedByUserName": "John Smith"
+                  "modifiedByUserName": "John Smith",
+                  "modifiedBy": 10654823
                 }]
         }]
 
@@ -99,7 +101,7 @@ A single Comment object with all its details
           "owner": "https://mc.s1.qa1.exacttarget.com/rest//beta/organization/10652396",
           "createdDate": "2014-05-01T16:20:02",
           "lastUpdated": "2014-05-01T16:26:31",
-          "createdBy": "10654823",
+          "createdBy": 10654823,
           "commentVersion": 1,
           "category1": "CampaignApproval-V2",
           "category2": "5096",
@@ -114,6 +116,7 @@ A single Comment object with all its details
           "isActive": true,
           "createdByUserName": "John Smith",
           "modifiedByUserName": "John Smith",
+          "modifiedBy": 10654823
         "childComments": []
         }
 
@@ -131,7 +134,7 @@ A single Comment object with all its details
               "id": 123456,
               "createdDate": "2014-05-02T12:52:16",
               "lastUpdated": "2014-05-02T12:59:20",
-              "createdBy": "10654823",
+              "createdBy": 10654823,
               "commentVersion": 3,
               "category1": "CampaignApproval-V2",
               "category2": "5096",
@@ -144,6 +147,7 @@ A single Comment object with all its details
               "isActive": true,
               "createdByUserName": "John Smith",
               "modifiedByUserName": "John Smith",
+              "modifiedBy": 10654823,
               "childCommentCount": 2,
               "childComments" :
                 [{
@@ -191,7 +195,7 @@ Update a Comment object
               "id": 12345,
               "createdDate": "2014-05-02T12:52:16",
               "lastUpdated": "2014-05-02T12:52:16",
-              "createdBy": "10654823",
+              "createdBy": 10654823,
               "commentVersion": 0,
               "category1": "CampaignApproval-V2",
               "category2": "5096",
@@ -203,7 +207,8 @@ Update a Comment object
               "y": "0.25316455696202533",
               "isActive": true,
               "createdByUserName": "John Smith",
-              "modifiedByUserName": "John Smith" 
+              "modifiedByUserName": "John Smith",
+              "modifiedBy": 10654823
             }
             
 ### Remove a Comment [DELETE]
@@ -215,39 +220,95 @@ Removes a Comment object
 ## Child Comments [/hub-internal/v1/comments/{id}/children/]
 
 + Parameters
-    + id (required, number, `12345`) ... number `id` of the parent comment to perform action with. Has example value.
+    + id (required, number, `101`) ... number `id` of the parent comment to perform action with. Has example value.
 
 ### Get a Collection of Child Comments [GET]
 
 + Response 200 (application/json)
 
         {
-            "_links": {
-                "self": { "href": "/comments/12345/children?page=1&pageSize=3" },
-                "next": { "href": "/comments/12345/children?page=2&pageSize=3" },
-                "prev": { "href": "/comments/12345/children?page=0&pageSize=3" }
-            },        
-            "count": 2,
-            "page": 1,
-            "pageSize": 3,
-            "entries": [
+            "count": 6,
+            "page": 0,
+            "pageSize": 0,
+            "links": {},
+            "items": [
                 {
-                  "id": 12349,
-                  "lastUpdated": "2014-05-02T12:52:16",
-                  "commentVersion": 0,
-                  "commentText": "Child comment 1",
-                  "isActive": true,
-                  "modifiedByUserName": "John Smith",
-                  "parentId": 12345
+                    "id": 102,
+                    "createdDate": "2014-05-12T13:37:46.14",
+                    "modifiedDate": "2014-05-12T13:37:46.14",
+                    "commentVersion": 0,
+                    "commentText": "word",
+                    "isActive": true,
+                    "createdByUserName": "MDS Sub04 2nd DB",
+                    "modifiedByUserName": "MDS Sub04 2nd DB",
+                    "createdBy": 30980,
+                    "parentId": 101,
+                    "modifiedBy": 30980
                 },
                 {
-                  "id": 12356,
-                  "lastUpdated": "2014-05-02T12:52:16",
-                  "commentVersion": 1,
-                  "commentText": "Child comment 2",
-                  "isActive": true,
-                  "modifiedByUserName": "John Smith",
-                  "parentId": 12345
+                    "id": 108,
+                    "createdDate": "2014-05-16T18:00:27.247",
+                    "modifiedDate": "2014-05-16T18:00:27.247",
+                    "commentVersion": 0,
+                    "commentText": "riiiiight",
+                    "isActive": true,
+                    "createdByUserName": "MDS Sub04 2nd DB",
+                    "modifiedByUserName": "MDS Sub04 2nd DB",
+                    "createdBy": 30980,
+                    "parentId": 101,
+                    "modifiedBy": 30980
+                },
+                {
+                    "id": 109,
+                    "createdDate": "2014-05-16T18:01:50.787",
+                    "modifiedDate": "2014-05-16T18:01:50.787",
+                    "commentVersion": 0,
+                    "commentText": "w3rd",
+                    "isActive": true,
+                    "createdByUserName": "MDS Sub04 2nd DB",
+                    "modifiedByUserName": "MDS Sub04 2nd DB",
+                    "createdBy": 30980,
+                    "parentId": 101,
+                    "modifiedBy": 30980
+                },
+                {
+                    "id": 110,
+                    "createdDate": "2014-06-04T11:05:51.42",
+                    "modifiedDate": "2014-06-04T11:05:51.42",
+                    "commentVersion": 0,
+                    "commentText": "riiiiight",
+                    "isActive": true,
+                    "createdByUserName": "MDS Sub04 2nd DB",
+                    "modifiedByUserName": "MDS Sub04 2nd DB",
+                    "createdBy": 30980,
+                    "parentId": 101,
+                    "modifiedBy": 30980
+                },
+                {
+                    "id": 111,
+                    "createdDate": "2014-06-04T11:50:21.93",
+                    "modifiedDate": "2014-06-04T11:50:21.93",
+                    "commentVersion": 0,
+                    "commentText": "riiiiight",
+                    "isActive": true,
+                    "createdByUserName": "MDS Sub04 2nd DB",
+                    "modifiedByUserName": "MDS Sub04 2nd DB",
+                    "createdBy": 30980,
+                    "parentId": 101,
+                    "modifiedBy": 30980
+                },
+                {
+                    "id": 112,
+                    "createdDate": "2014-06-04T11:53:52.01",
+                    "modifiedDate": "2014-06-04T11:53:52.01",
+                    "commentVersion": 0,
+                    "commentText": "riiiiight",
+                    "isActive": true,
+                    "createdByUserName": "MDS Sub04 2nd DB",
+                    "modifiedByUserName": "MDS Sub04 2nd DB",
+                    "createdBy": 30980,
+                    "parentId": 101,
+                    "modifiedBy": 30980
                 }
             ]
         }
