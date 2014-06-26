@@ -8,18 +8,20 @@ Comments API is a service that performs CRUD on comments.
 
 Comments related resources of the **Comments API**
 
-## Comments Collection [/hub-internal/v1/comments{?category1,category2,category3,objectid,addressed,completed}]
+## Comments Collection [/hub-internal/v1/comments{?category1StartsWith,category2StartsWith,category3StartsWith,objectid,addressed,completed,pageSize,page}]
 This API returns all comments that meet the filter criteria.
 
-**NOTE: At least one of the following parameters must be specified, or the API will not return results: category1, category2, category3, objectid**
+**NOTE: At least one of the following parameters must be specified, or the API will not return results: category1StartsWith, category2StartsWith, category3StartsWith, objectid**
 
 + Parameters
-    + category1 (optional, string)
-    + category2 (optional, string)
-    + category3 (optional, string)
+    + category1StartsWith (optional, string)
+    + category2StartsWith (optional, string)
+    + category3StartsWith (optional, string)
     + objectid (optional, string)
     + addressed (optional, number) ... If not set, then does not filter by addressed-or-not. If set to `1`, then returns only those comments that are addressed. If set to something else, then returns only those comments that are not addressed.
     + completed (optional, number) ... If not set, then does not filter by completed-or-not. If set to `1`, then returns only those comments that are completed. If set to something else, then returns only those comments that are not completed.
+    + pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the page parameter is not also set**, then defaults to `100`.
+    + page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
 
 ### List all Comments [GET]
 + Response 200 (application/json)
@@ -117,7 +119,6 @@ A single Comment object with all its details
           "createdByUserName": "John Smith",
           "modifiedByUserName": "John Smith",
           "modifiedBy": 10654823
-        "childComments": []
         }
 
 ## Comment [/hub-internal/v1/comments/{id}]
@@ -148,26 +149,7 @@ A single Comment object with all its details
               "createdByUserName": "John Smith",
               "modifiedByUserName": "John Smith",
               "modifiedBy": 10654823,
-              "childCommentCount": 2,
-              "childComments" :
-                [{
-                  "id": 11,
-                  "modifiedDate": "2014-05-02T12:52:16",
-                  "commentVersion": 0,
-                  "commentText": "Child comment 1",
-                  "isActive": true,
-                  "modifiedByUserName": "John Smith",
-                  "parentId": 12345
-                },
-                {
-                  "id": 22,
-                  "modifiedDate": "2014-05-02T12:52:16",
-                  "commentVersion": 0,
-                  "commentText": "Child comment 2",
-                  "isActive": true,
-                  "modifiedByUserName": "John Smith",
-                  "parentId": 12345
-                }]
+              "childCommentCount": 2
             }
 
 ### Update a Comment [PATCH]
@@ -211,7 +193,6 @@ All fields in the request payload object are optional.
                 "createdByUserName": "MDS Sub04 2nd DB",
                 "modifiedByUserName": "MDS Sub04 2nd DB",
                 "createdBy": 30980,
-                "childComments": [],
                 "parentId": 0,
                 "completedDate": "2014-06-06T14:13:24.42",
                 "modifiedBy": 30980
@@ -223,17 +204,19 @@ Removes a Comment object
 
 + Response 200 (application/json)
     + Body
-
+    
             {
                 "message": "Comment 123456 successfully deleted."
             }
 
-## Child Comments [/hub-internal/v1/comments/{id}/children/]
+## Get Collection of Child Comments [/hub-internal/v1/comments/{id}/children/{?pageSize,page}]
+
+### Get [GET]
 
 + Parameters
     + id (required, number, `101`) ... number `id` of the parent comment to perform action with. Has example value.
-
-### Get a Collection of Child Comments [GET]
+    + pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the page parameter is not also set**, then defaults to `100`.
+    + page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
 
 + Response 200 (application/json)
 
@@ -324,7 +307,9 @@ Removes a Comment object
             ]
         }
 
-### Create a Child Comment [POST]
+## Create a Child Comment [/hub-internal/v1/comments/{id}/children/]
+
+### Create [POST]
 
 + Request (application/json)
 
