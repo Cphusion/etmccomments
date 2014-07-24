@@ -8,20 +8,13 @@ Comments API is a service that performs CRUD on comments.
 
 Comments related resources of the **Comments API**
 
-## Comments Collection [/hub-internal/v1/comments{?category1StartsWith,category2StartsWith,category3StartsWith,objectid,addressed,completed,pageSize,page}]
+## Comments Collection [/hub-internal/v1/comments{?%24filter,%24pageSize,%24page}]
 This API returns all comments that meet the filter criteria.
 
-**NOTE: At least one of the following parameters must be specified, or the API will not return results: category1StartsWith, category2StartsWith, category3StartsWith, objectid**
-
 + Parameters
-    + category1StartsWith (optional, string)
-    + category2StartsWith (optional, string)
-    + category3StartsWith (optional, string)
-    + objectid (optional, string)
-    + addressed (optional, number) ... If not set, then does not filter by addressed-or-not. If set to `1`, then returns only those comments that are addressed. If set to something else, then returns only those comments that are not addressed.
-    + completed (optional, number) ... If not set, then does not filter by completed-or-not. If set to `1`, then returns only those comments that are completed. If set to something else, then returns only those comments that are not completed.
-    + pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the page parameter is not also set**, then defaults to `100`.
-    + page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
+    + %24filter (optional, string) ... A filter query that can contain any of the following fields (case-sensitive): `Category1`, `Category2`, `Category3`, `ObjectId`, `AddressedDate`, `CompletedDate`
+    + %24pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the %24page parameter is not also set**, then defaults to `100`.
+    + %24page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
 
 ### List all Comments [GET]
 + Response 200 (application/json)
