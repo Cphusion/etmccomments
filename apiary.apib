@@ -8,13 +8,13 @@ Comments API is a service that performs CRUD on comments.
 
 Comments related resources of the **Comments API**
 
-## Comments Collection [/hub-internal/v1/comments{?%24filter,%24pageSize,%24page}]
+## Comments Collection [/hub-internal/v1/comments{?filter,pageSize,page}]
 This API returns all comments that meet the filter criteria.
 
 + Parameters
-    + %24filter (optional, string) ... A filter query that can contain any of the following fields (case-sensitive): `Category1`, `Category2`, `Category3`, `ObjectId`, `AddressedDate`, `CompletedDate`
-    + %24pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the %24page parameter is not also set**, then defaults to `100`.
-    + %24page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
+    + filter (optional, string) ... A filter query that can contain any of the following fields (case-sensitive): `Category1`, `Category2`, `Category3`, `ObjectId`, `AddressedDate`, `CompletedDate`
+    + pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the page parameter is not also set**, then defaults to `100`.
+    + page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
 
 ### List all Comments [GET]
 + Response 200 (application/json)
