@@ -11,10 +11,15 @@ Comments related resources of the **Comments API**
 ## Comments Collection [/hub-internal/v1/comments{?filter,pageSize,page}]
 This API returns all comments that meet the filter criteria.
 
+<strong>Example:</strong> /hub-internal/v1/comments?$filter=Category1 eq 'CampaignApproval-V2' and Category2 eq 1234 and Category3 like 'Email%25' or Category3 like 'Mobile%25' and ObjectId eq 12345,$orderBy=CompletedDate DESC, Category3 ASC
+
+
 + Parameters
     + filter (optional, string) ... A filter query that can contain any of the following fields (case-sensitive): `Category1`, `Category2`, `Category3`, `ObjectId`, `AddressedDate`, `CompletedDate`
+    + orderBy (optional, string) ... keyword used to sort the result-set by one or more columns. It can contain any of the following fields (case-sensitive): `Category1`, `Category2`, `Category3`, `ObjectId`, `AddressedDate`, `CompletedDate`
     + pageSize (optional, number) ... The maximum number of results to return. If not set, **or if the page parameter is not also set**, then defaults to `100`.
     + page (optional, number) ... The one-based page number for results. If not set, defaults to `1`.
+
 
 ### List all Comments [GET]
 + Response 200 (application/json)
