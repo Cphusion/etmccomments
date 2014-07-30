@@ -8,7 +8,7 @@ Comments API is a service that performs CRUD on comments.
 
 Comments related resources of the **Comments API**
 
-## Comments Collection [/hub-internal/v1/comments{?filter,pageSize,page}]
+## Comments Collection [/hub-internal/v1/comments{?filter,pageSize,page,orderBy}]
 This API returns all comments that meet the filter criteria.
 
 <strong>Example:</strong> /hub-internal/v1/comments?$filter=Category1 eq 'CampaignApproval-V2' and Category2 eq 1234 and Category3 like 'Email%25' or Category3 like 'Mobile%25' and ObjectId eq 12345,$orderBy=CompletedDate DESC, Category3 ASC
